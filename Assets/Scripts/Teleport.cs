@@ -8,14 +8,16 @@ public class Teleport : MonoBehaviour
     public GameObject input;
     public GameObject player;
 
-    //A custome function to activate the teleportation
-
-
+    
     //A custome function that teleports the player an X amount of space 
     
-
+    /*look into refrencing the controller to attach the teleportation
+    */
+    
     //A custome function to jump behind the opponent
-
+    /*
+        use some kind of attack function
+    */
     //the action of teleporting
     IEnumerable input()
     {
