@@ -7,50 +7,44 @@ public class Teleport : MonoBehaviour
     //controller input to activate the teleport
     public GameObject input;
     public GameObject player;
-    Renderer rend;
-    Color c;
 
-    /*
-    A custome function that teleports the player an X amount of space 
-
-    look into refrencing the controller to attach the teleportation
-
-    A custome function to jump behind the opponent and doew some kind of attack
+    
+    //A custome function that teleports the player an X amount of space 
+    
+    /*look into refrencing the controller to attach the teleportation
     */
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rend = GetComponent<Renderer>();
-        c = rend.material.color;
-    }
-
-
-        //the action of teleporting
+    
+    //A custome function to jump behind the opponent
+    /*
+        use some kind of attack function
+    */
+    //the action of teleporting
     IEnumerable input()
     {
-
         yield return new WaitForSeconds(1);
         player.transform.position = new Vector2(Input.transform.positon.x);
     }
-    void OnTriggerEnter2D()
-    {
-        if(Input.Equals("left shift") && Input.GetAxis("Horizontal"))
-    }
 
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
                 //veriables
-        //float yAxis = Input.GetAxis("Vertical");
         float xAxis = Input.GetAxis("Horizontal");
+        //float yAxis = Input.GetAxis("Vertical");
         Vector2 position = transform.position;
 
         //to debug the movement
-        //Debug.Log(x);
-        //Debug.Log(y);
-        
+        /*
+            Debug.Log(x);
+            Debug.Log(y);
+        */
 
         //controls 
         position.x = position.x + 3.0f * xAxis;
@@ -69,5 +63,4 @@ public class Teleport : MonoBehaviour
             // game_get_speed(gamespeed_fps);
         }
     }
-
 }
