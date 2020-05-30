@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MonoBehaviour
+public class Dash : MonoBehaviour
 {
-    //controller input to activate the teleport
-    public GameObject input;
+       //controller input to activate the teleport
     public GameObject player;
     Renderer rend;
     Color c;
@@ -27,15 +26,10 @@ public class Teleport : MonoBehaviour
 
 
         //the action of teleporting
-    IEnumerable input()
-    {
-
-        yield return new WaitForSeconds(1);
-        player.transform.position = new Vector2(Input.transform.positon.x);
-    }
     void OnTriggerEnter2D()
     {
-        if(Input.Equals("left shift") && Input.GetAxis("Horizontal"))
+        yield return new WaitForSeconds(1);
+        player.transform.position = new Vector2(Input.transform.positon.x);
     }
 
 
@@ -69,5 +63,4 @@ public class Teleport : MonoBehaviour
             // game_get_speed(gamespeed_fps);
         }
     }
-
 }
