@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
+[DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class Teleport : MonoBehaviour
 {
     //controller input to activate the teleport
@@ -34,7 +36,11 @@ public class Teleport : MonoBehaviour
     }
     void OnTriggerEnter2D()
     {
-        if(Input.Equals("left shift") && Input.GetAxis("Horizontal"))
+        //when enemy colider is x far away while dash active port behind it. 
+        if()
+        {
+            //teleport
+        }
     }
 
 
@@ -52,12 +58,11 @@ public class Teleport : MonoBehaviour
         
 
         //controls 
-        position.x = position.x + 3.0f * xAxis;
+        position.x = position.x + 1.0f * xAxis * Time.deltaTime;
         transform.position = position;
         
         /*
-        first make an invincible veriable set to false 
-        second make turn on on dash and teleport
+        first make an invincible veriable return true on dash
         */
         
         //invincibility
@@ -69,4 +74,8 @@ public class Teleport : MonoBehaviour
         }
     }
 
+    private string GetDebuggerDisplay()
+    {
+        return ToString();
+    }
 }

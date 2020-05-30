@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
+[DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class Dash : MonoBehaviour
 {
        //controller input to activate the teleport
@@ -23,6 +25,16 @@ public class Dash : MonoBehaviour
         rend = GetComponent<Renderer>();
         c = rend.material.color;
     }
+        void OnTriggerEnter2D()
+    {
+        if(Input.Equals("left shift") && Input.GetAxis("Horizontal"))
+        {
+            //dash
+            position.x = position.x + 6.0f * xAxis;
+            transform.position = position;
+        }
+    }
+
 
 
         //the action of teleporting
@@ -62,5 +74,10 @@ public class Dash : MonoBehaviour
             invincible_ = true;
             // game_get_speed(gamespeed_fps);
         }
+    }
+
+    private string GetDebuggerDisplay()
+    {
+        return ToString();
     }
 }
