@@ -30,6 +30,7 @@ public class Dash : MonoBehaviour
         if(Input.Equals("left shift") && Input.GetAxis("Horizontal"))
         {
             //dash
+            yield return new WaitForSeconds(1);
             position.x = position.x + 6.0f * xAxis;
             transform.position = position;
         }
@@ -40,7 +41,6 @@ public class Dash : MonoBehaviour
         //the action of teleporting
     void OnTriggerEnter2D()
     {
-        yield return new WaitForSeconds(1);
         player.transform.position = new Vector2(Input.transform.positon.x);
     }
 
