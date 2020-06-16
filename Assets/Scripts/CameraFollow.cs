@@ -1,31 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform playerCharacter;
-    public float cameraDistance = 30.0F;
+    public Transform target;
+    public float cameraDistance = 20f;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
 
     void Awake() {
         GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / cameraDistance);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
-        transform.position = new Vector3(playerCharacter.position.x + 2.5f, playerCharacter.position.y + .5f, transform.position.z);
+        Vector3 targetPosition = target.position + offset;
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+        transform.position = smoothPosition;
     }
 }

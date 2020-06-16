@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
     public Animator animator;
     public float jumpForce;
-    public bool isJumping;
+    public bool isJumping, isCrouching;
     float horizontalMove = 0f;
+    public SpriteRenderer spriteR;
+    // public Sprite idle, run, crouch, crouch_walk, jump;
     
     private void Awake()
     {
@@ -21,34 +23,29 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     private void Update()
     {
-        
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0f);
         moveVelocity = moveInput.normalized * speed;
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        
-
-        // Crouch
-        if(Input.GetKeyDown("s")) 
-        {
-            animator.SetBool("isCrouch", true);
-            Debug.Log("S was pressed");
-        }
+        // if(Input.GetKeyDown("d") || Input.GetButtonDown("a"))
+        // {   
+        //     this.GetComponent<SpriteRenderer>().sprite = run;
+        // }
+        Crouch();
+        Flip();
+        Jump();
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-        Flip();
-        Jump();
     }
 
 
@@ -57,6 +54,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && !isJumping)
         {   
             isJumping = true;
+            animator.SetBool("isJumping", true);
             // rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             rb.AddForce(Vector2.up * jumpForce);
             Debug.Log("Space key was pressed");
@@ -79,10 +77,25 @@ public class PlayerController : MonoBehaviour
         transform.localScale = characterScale;
     }
 
-    void   OnCollisionEnter2D(Collision2D other)
+    // Crouch
+    void Crouch()
+    {
+        if(Input.GetKey("s")) 
+        {
+            animator.SetBool("isCrouch", true);
+            Debug.Log("S was pressed");
+        }
+        else
+        {
+            animator.SetBool("isCrouch", false);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Ground")){
             isJumping = false;
+            animator.SetBool("isJumping", false);
 
             rb.velocity = Vector2.zero;
             Debug.Log("OnCollisionEnter2D Called");
