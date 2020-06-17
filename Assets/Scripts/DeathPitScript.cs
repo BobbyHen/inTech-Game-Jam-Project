@@ -8,7 +8,6 @@ public class DeathPitScript : MonoBehaviour
          if (other.gameObject.CompareTag("Player"))
          {
              SceneManager.LoadScene(1);
-             Debug.Log("Comparason accured");
          }
      }
 }
