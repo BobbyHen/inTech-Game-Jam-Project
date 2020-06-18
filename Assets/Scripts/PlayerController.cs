@@ -93,12 +93,25 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Ground")){
+        if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform") ){
             isJumping = false;
             animator.SetBool("isJumping", false);
 
             rb.velocity = Vector2.zero;
-            Debug.Log("OnCollisionEnter2D Called");
+        }
+
+        if(other.gameObject.CompareTag("Platform")) 
+        {
+            this.transform.parent = other.transform;
         }
     }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Platform")){
+            this.transform.parent = null;
+        }
+    }
+
 }
+   
