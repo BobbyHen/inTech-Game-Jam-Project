@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - Pit
   - Enemy
+  - Tree_Enter
   layers:
   - Default
   - TransparentFX
