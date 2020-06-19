@@ -165,8 +165,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
             isJumping = false;
             playerAnim.SetBool("isJumping", false);
 
@@ -191,3 +189,4 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 }
+   

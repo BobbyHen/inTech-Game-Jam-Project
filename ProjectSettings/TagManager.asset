@@ -9,6 +9,7 @@ TagManager:
   - Pit
   - Enemy
   - Laser
+  - Tree_Enter
   layers:
   - Default
   - TransparentFX
