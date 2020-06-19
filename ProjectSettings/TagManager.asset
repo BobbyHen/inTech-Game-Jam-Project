@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - Pit
   - Enemy
+  - Laser
   layers:
   - Default
   - TransparentFX

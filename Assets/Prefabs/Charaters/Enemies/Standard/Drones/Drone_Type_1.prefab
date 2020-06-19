@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 9198868959751228083}
   m_Layer: 0
   m_Name: Drone_Type_1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
