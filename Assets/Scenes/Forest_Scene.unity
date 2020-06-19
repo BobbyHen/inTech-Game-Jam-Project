@@ -1959,7 +1959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664571947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0692, y: -4.45, z: 0}
+  m_LocalPosition: {x: 0.62, y: -4.93, z: 0}
   m_LocalScale: {x: 0.1701383, y: 0.1686863, z: 0.177421}
   m_Children:
   - {fileID: 425137583}
@@ -2024,9 +2024,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 100
+  m_LinearDrag: 1
   m_AngularDrag: 0
-  m_GravityScale: 45
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2044,9 +2044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfa3cf9e31f14d5a93dbfae01b0683c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  animator: {fileID: 664571955}
-  jumpForce: 4500
+  playerAnim: {fileID: 0}
+  playerSpeed: 1
+  gravityModifier: 1
+  jumpForce: 15
+  dashForce: 0
   isJumping: 0
   isCrouching: 0
   spriteR: {fileID: 0}

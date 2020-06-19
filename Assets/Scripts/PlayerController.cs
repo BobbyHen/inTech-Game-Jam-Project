@@ -54,19 +54,16 @@ public class PlayerController : MonoBehaviour
         // }
 
         //Added move method.
+    }
+    void FixedUpdate()
+    {
         Move();
         Crouch();
         Flip();
         Jump();
         Dash();
+        // playerRb.MovePosition(playerRb.position + moveVelocity * Time.fixedDeltaTime);
     }
-
-  /* 
-    void FixedUpdate()
-    {
-        playerRb.MovePosition(playerRb.position + moveVelocity * Time.fixedDeltaTime);
-    }
-  */
 
     void Jump()
     {
@@ -134,14 +131,21 @@ public class PlayerController : MonoBehaviour
 
     void Dash()
     {
+        horizontalMovement = Input.GetAxis("Horizontal");
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-        
-            playerRb.AddForce(Vector2.right * 25, ForceMode2D.Impulse);
-            playerAnim.SetBool("Dash_Bool", true);
-            Debug.Log("Shift Is Pressed Character Dashing");
-            
-
+        if (horizontalMovement > 0.00f)
+        {
+            playerRb.AddForce(Vector2.right * 125, ForceMode2D.Impulse);
+            //playerAnim.SetBool("Dash_Bool", true);
+        }
+        else if (horizontalMovement < 0.00f)
+        {
+            playerRb.AddForce(Vector2.left * 125, ForceMode2D.Impulse);
+            //playerAnim.SetBool("Dash_Bool", true);
+        }
+            Debug.Log("you are Dashing");
         }
     }    
 
