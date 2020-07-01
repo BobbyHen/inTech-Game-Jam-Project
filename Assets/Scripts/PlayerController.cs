@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     float horizontalMove = 0f;
 
     [Header("Dash")]
-    public float dashSpd = 200f;
+    public float dashSpd = 300f;
     private float dashTm;
-    public float strtDashTm = 0.01f;
+    public float strtDashTm = 0.1f;
     private int direction;
 
     // public Sprite idle, run, crouch, crouch_walk, jump;
