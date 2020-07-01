@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public Animator animator;
+    public SpriteRenderer spriteR;
+
+    // the movement veriables
+    public float speed;
     public float jumpForce;
     public bool isJumping, isCrouching;
     float horizontalMove = 0f;
-    public SpriteRenderer spriteR;
+
+    [Header("Dash")]
+    public float dashSpd = 200f;
+    private float dashTm;
+    public float strtDashTm = 0.01f;
+    private int direction;
+
     // public Sprite idle, run, crouch, crouch_walk, jump;
     
     private void Awake()
@@ -41,6 +50,7 @@ public class PlayerController : MonoBehaviour
         Crouch();
         Flip();
         Jump();
+        Dash();
     }
 
     void FixedUpdate()
@@ -91,6 +101,55 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Dash()
+    {
+        // player is not dashing as default
+        if (direction == 0)
+        {
+            if(Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if(horizontalMove < 0f)
+                {
+                    direction = 1;
+                }
+                else if(horizontalMove > 0f)
+                {
+                    direction = 2;
+                }
+            }
+        }
+        else
+        {        
+                if(dashTm <= 0)
+                {
+                    direction = 0;
+                    dashTm = strtDashTm;
+                    rb.velocity = Vector2.zero;
+                    // rb.position = rb.AddForce(Vector2.right * 100.0f);
+                    // rb.AddForce(Vector2.right * 125f);
+                }
+                else
+                {
+                    // if the player can dash, they dash either left or right
+                    dashTm -= Time.deltaTime;
+                    dashSpd *= 1f;
+                    if (direction == 1)
+                    {
+                        rb.AddForce(Vector2.left * dashSpd);
+                    }
+                    else if (direction == 2)
+                    {
+                        rb.AddForce(Vector2.right * dashSpd);
+                    }
+                    /*
+                    transform.position = rb.AddForce(Vector2.right * 100.0f);
+                    rb.position = transform.position;
+                    //rb.AddForce(Vector2.left * 125f);
+                    */
+                }
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform") ){
@@ -114,4 +173,3 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-   
