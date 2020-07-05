@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     float horizontalMove = 0f;
 
     [Header("Dash")]
-    public float dashSpd = 300f;
+    public float dashSpd = 2750f;
     private float dashTm;
-    public float strtDashTm = 0.1f;
+    public float strtDashTm = 0.02f;
     private int direction;
 
     // public Sprite idle, run, crouch, crouch_walk, jump;
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
                 {
                     direction = 2;
                 }
+                Debug.Log("left shift was pressed");
             }
         }
         else

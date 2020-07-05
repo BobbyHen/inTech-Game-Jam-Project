@@ -380,12 +380,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfa3cf9e31f14d5a93dbfae01b0683c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   animator: {fileID: 7132455845204646517}
+  spriteR: {fileID: 0}
+  speed: 10
   jumpForce: 4500
   isJumping: 0
   isCrouching: 0
-  spriteR: {fileID: 0}
+  dashSpd: 2750
+  strtDashTm: 0.02
 --- !u!50 &7132455845204646519
 Rigidbody2D:
   serializedVersion: 4
@@ -402,7 +404,7 @@ Rigidbody2D:
   m_LinearDrag: 100
   m_AngularDrag: 0
   m_GravityScale: 45
-  m_Material: {fileID: 6200000, guid: 5fb1cbe0f6bb042e3b33aa4c5b74d729, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -416,7 +418,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7132455845204646509}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5fb1cbe0f6bb042e3b33aa4c5b74d729, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
